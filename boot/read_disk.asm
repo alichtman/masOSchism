@@ -41,8 +41,7 @@ disk_read_error:
     mov bx, ERROR_CODE_STR
     call print
     mov dh, ah
-    call print_hex
-    call print_newline
+    call print_hex_with_newline
     jmp disk_error_loop
 
 incorrect_sectors_read_error:

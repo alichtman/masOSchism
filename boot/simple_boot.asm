@@ -30,7 +30,7 @@ jmp $  ; Hang
 ; Includes
 %include "print_ascii.asm"
 %include "print_hex.asm"
-%include "boot_sect_disk.asm"
+%include "read_disk.asm"
 
 ; data section
 BOOT_MSG: db ' --> Booting masOSchism...', 0

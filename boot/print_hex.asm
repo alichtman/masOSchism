@@ -1,5 +1,8 @@
-; External code can call print_hex
-; Hex value should be passed in dx register
+;;;;;;;;;;;;;;;;;;;;;;;;
+; Print hex values
+; External code can call print_hex or print_hex_with_newline
+; ARGS
+; dx -> Hex value to be printed
 
 print_hex:
     pusha
