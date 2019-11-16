@@ -34,8 +34,7 @@ place_ascii_val_in_str:
 print_hex_done:
     ; Print output
     mov bx, HEX_OUTPUT
-    call print_ascii_start
-
+    call print
     popa
     ret
 
