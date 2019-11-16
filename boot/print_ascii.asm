@@ -1,5 +1,16 @@
+; External code can call print, print_newline or print_with_newline
+; String args should be passed in bx
+
 print:
     pusha
+    jmp print_ascii_start
+
+print_with_newline:
+    pusha
+    call print
+    call print_newline
+    popa
+    ret
 
 ; while (str[x] != 0) {
 ;   print(str[x]);
@@ -29,7 +40,6 @@ print_ascii_done:
 ; characters
 print_newline:
     pusha
-
     mov ah, 0x0e ; Tell BIOS to print things
     mov al, 0x0a ; Newline char
     int 0x10

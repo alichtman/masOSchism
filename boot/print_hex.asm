@@ -1,8 +1,18 @@
+; External code can call print_hex
+; Hex value should be passed in dx register
+
 print_hex:
     pusha
     mov cx, 0 ; loop index variable
+    jmp print_hex_loop
 
-; Hex value passed in dx register
+print_hex_with_newline:
+    pusha
+    call print_hex
+    call print_newline
+    popa
+    ret
+
 ; Implementation: Extract last byte. ASCII 0-9 has hex values of 0x30 - 0x39.
 ; ASCII A-F has hex values of 0x41 - 0x46. Start off by adding 0x30. If the result
 ; is greater than 0x39, add another 7 to get the A - F range. Then place the result
@@ -42,4 +52,4 @@ print_hex_done:
 HEX_OUTPUT:
     db "0x0000", 0
 
-; vim: set ft=nasm noet :
+; vim: set ft=nasm et :
