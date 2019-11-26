@@ -29,3 +29,5 @@ initialize_32bit_protected_mode:
     mov esp, ebp
 
     call begin_protected_mode_routine ; Jump to a main routine
+
+; vim: set ft=nasm ts=4 sw=4 tw=0 et :
