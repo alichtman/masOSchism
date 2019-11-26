@@ -1,18 +1,11 @@
-/* This will force us to create a kernel entry function instead of jumping to kernel.c:0x00 */
-void dummy_test_entrypoint() { }
+#include "display.c"
 
-void write_to_video_memory(char* str, char *video_mem_addr) {
-	while (*str) {
-		*video_mem_addr = *str;
-		str++;
-		video_mem_addr += 2;
-	}
-	return;
-}
-
-void main() {
-	char* str = "HELLO FROM THE KERNEL";
-	write_to_video_memory(str, (char*) 0xb8000);
+int main() {
+    /* clear_screen(); */
+    char* hello = "HELLO FROM THE KERNEL!";
+	print_string_top_left(hello);
+	return 0; // If this line of code ever runs, we have a huge issue.
 }
 
 
+/* vim: set ts=4 sw=4 tw=0 noet : */
