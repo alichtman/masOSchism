@@ -1,11 +1,11 @@
 #include "display.c"
+#include "system.c"
 
 int main() {
-    /* clear_screen(); */
-    char* hello = "HELLO FROM THE KERNEL!";
-	print_string_top_left(hello);
+	init_video();
+    char* boot_success_msg = "masOSchism kernel v0.01 booted successfully.";
+	print_string_top_left(boot_success_msg);
 	return 0; // If this line of code ever runs, we have a huge issue.
 }
-
 
 /* vim: set ts=4 sw=4 tw=0 noet : */
