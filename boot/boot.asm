@@ -44,9 +44,10 @@ load_kernel:
 begin_protected_mode_routine:
 	mov ebx, HELLO_FROM_PROTECTED_MODE_MSG ; This will be printed at the top of the screen
 	call print_string_32b
-	; TODO: Here is where it all breaks
 	call KERNEL_OFFSET ; Give control to the kernel
-	jmp $
+	mov ebx, 0  ; exit code, 0=normal
+	mov eax, 1  ; exit command to kernel
+	int 0x80    ; interrupt 80 hex, call kernel
 
 ;;;;;;;;;;;;;;;;
 ; DATA SECTION ;
@@ -55,9 +56,9 @@ begin_protected_mode_routine:
 BOOT_DRIVE: db 0 ; Since 'dl' may be overwritten, this should be stored in memory
 
 ; Messages
-BOOT_MSG: db 'Booting masOSchism in Real Mode', 0
-HELLO_FROM_PROTECTED_MODE_MSG: db "Switched to Prot. Mode", 0
-LOADING_KERNEL_MSG: db "Loading kernel into memory", 0
+BOOT_MSG: db 'Booting masOSchism - Real Mode', 0
+HELLO_FROM_PROTECTED_MODE_MSG: db "Switched to PM", 0
+LOADING_KERNEL_MSG: db "Loading kernel into mem", 0
 
 ; Fill with 510 zeros minus the size of the previous code and append magic number
 times 510-($-$$) db 0
