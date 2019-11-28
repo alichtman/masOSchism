@@ -1,11 +1,34 @@
+// /**
+//  * Read from I/O port to get data from devices, such as the the keyboard.
+//  * @param _port
+//  * @return
+//  */
+// unsigned char inportb(unsigned short _port) {
+//     unsigned char rv;
+//     __asm__ __volatile__("inb %1, %0"
+//                          : "=a"(rv)
+//                          : "dN"(_port));
+//     return rv;
+// }
+
+// /**
+//  * Write to I/O port to send data to devices.
+//  * @param _port
+//  * @param _data
+//  * @return
+//  */
+// void outportb(unsigned short _port, unsigned char _data) {
+//     __asm__ __volatile__("outb %1, %0"
+//                          :
+//                          : "dN"(_port), "a"(_data));
+// }
+
 /**
  * Read a byte from the specified port
  */
 unsigned char port_byte_in(unsigned short port) {
     unsigned char result;
-    /* Inline assembler syntax
-     * !! Notice how the source and destination registers are switched from NASM !!
-     *
+    /* Inline assembler syntax. The source and destination registers are switched from NASM.
      * '"=a" (result)'; set '=' the C variable '(result)' to the value of register e'a'x
      * '"d" (port)': map the C variable '(port)' into e'd'x register
      *

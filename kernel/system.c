@@ -8,7 +8,7 @@
  * @return Starting address of destination.
  */
 void *memcpy(char *dest, const char *src, int count) {
-    unsigned char *dest_cpy = dest;
+    char *dest_cpy = dest;
     for (int i = 0; i < count; i++) {
         *dest_cpy = *src;
         src++;
@@ -40,14 +40,14 @@ void *memset(char *dest, char val, int count) {
  * @param count
  * @return
  */
-// unsigned short *memsetw(unsigned short *dest, unsigned short val, int count) {
-//     unsigned short *dest_orig = dest;
-//     for (int i = 0; i < count; i++) {
-//         *dest = val;
-//         dest++;
-//     }
-//     return dest_orig;
-// }
+void *memsetw(unsigned short *dest, unsigned short val, int count) {
+    unsigned short *dest_orig = dest;
+    for (int i = 0; i < count; i++) {
+        *dest = val;
+        dest++;
+    }
+    return dest_orig;
+}
 
 /**
  * Returns the length of a string in bytes.
